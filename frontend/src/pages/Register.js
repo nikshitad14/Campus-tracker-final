@@ -59,7 +59,13 @@ export default function Register() {
               <div className="form-group">
                 <label>Branch *</label>
                 <select name="branch" value={form.branch} onChange={handleChange}>
-                  <option value="">-- Select --</option>
+                 <select name="year" value={form.year} onChange={handleChange}>
+  <option value="">-- Select --</option>
+  <option value="1">1st Year</option>
+  <option value="2">2nd Year</option>
+  <option value="3">3rd Year</option>
+  <option value="4">4th Year</option>
+</select>
                   {BRANCHES.map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
               </div>
