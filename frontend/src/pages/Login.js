@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
@@ -75,6 +76,12 @@ export default function Login() {
               {loading ? 'Signing in…' : 'Sign In →'}
             </button>
           </form>
+<p style={{ textAlign: 'center', marginTop: 16, fontSize: 14, color: 'var(--muted)' }}>
+  New student?{' '}
+  <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 600 }}>
+    Create Account →
+  </Link>
+</p>
 
           {/* Role badges */}
           <div style={{ marginTop: 24, borderTop: '1px solid var(--border)', paddingTop: 20 }}>
