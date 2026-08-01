@@ -6,7 +6,8 @@ const COLORS = {
   primary: '#3F4B76',
   secondary: '#768A93',
   light: '#AEB8C4',
-  background: "linear-gradient(135deg, #14213D 0%, #1F2D5A 45%, #3F4B76 100%)",
+background: "red",
+
   white: '#FFFFFF',
   hover: '#313B60'
 };
