@@ -31,7 +31,11 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ success: false, message: 'Internal Server Error' });
 });
-
+// Keep backend awake - ping itself every 14 minutes
+setInterval(() => {
+  const http = require('http');
+  http.get('http://localhost:5000/');
+}, 14 * 60 * 1000);
 app.listen(PORT, () => {
   console.log(`\n🚌 Campus Bus Tracker API running at http://localhost:${PORT}`);
   console.log(`📍 API Base: http://localhost:${PORT}/api\n`);
