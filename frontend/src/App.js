@@ -4,6 +4,7 @@ import { AuthProvider } from './utils/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Home from './pages/Home';
 import RoutesPage from './pages/RoutesPage';
 import RouteDetail from './pages/RouteDetail';
@@ -27,37 +28,15 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public */}
-          <Route path="/login" element={<Login />} />
-
-          {/* All logged-in users */}
+          <Route path="/login"    element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<ProtectedRoute><Layout><Home /></Layout></ProtectedRoute>} />
           <Route path="/routes" element={<ProtectedRoute><Layout><RoutesPage /></Layout></ProtectedRoute>} />
           <Route path="/routes/:id" element={<ProtectedRoute><Layout><RouteDetail /></Layout></ProtectedRoute>} />
           <Route path="/map" element={<ProtectedRoute><Layout><MapPage /></Layout></ProtectedRoute>} />
-
-          {/* Students & Admin only */}
-          <Route path="/subscribe" element={
-            <ProtectedRoute roles={['student','admin']}>
-              <Layout><Subscribe /></Layout>
-            </ProtectedRoute>
-          } />
-
-          {/* Admin only */}
-          <Route path="/admin" element={
-            <ProtectedRoute roles={['admin']}>
-              <Layout><AdminDashboard /></Layout>
-            </ProtectedRoute>
-          } />
-
-          {/* Driver only */}
-          <Route path="/driver" element={
-            <ProtectedRoute roles={['driver']}>
-              <Layout><DriverPanel /></Layout>
-            </ProtectedRoute>
-          } />
-
-          {/* Catch all → login */}
+          <Route path="/subscribe" element={<ProtectedRoute roles={['student','admin']}><Layout><Subscribe /></Layout></ProtectedRoute>} />
+          <Route path="/admin" element={<ProtectedRoute roles={['admin']}><Layout><AdminDashboard /></Layout></ProtectedRoute>} />
+          <Route path="/driver" element={<ProtectedRoute roles={['driver']}><Layout><DriverPanel /></Layout></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </BrowserRouter>
